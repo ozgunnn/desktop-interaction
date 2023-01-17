@@ -1,24 +1,56 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Hello, World!</title>
-        
-        <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
-        <script type="text/javascript" src="/eel.js"></script>
-        <script type="text/javascript">
-        
-        eel.expose(say_hello_js);               // Expose this function to Python
-        function say_hello_js(x) {
-            console.log("Hello from " + x);
-        }
-        
-        say_hello_js("Javascript World!");
-        eel.say_hello_py("Javascript World!");  // Call a Python function
-        
-        </script>
-    </head>
-    
-    <body>
-        Hello, World!
-    </body>
+  <head>
+    <title>Hello, World!</title>
+
+    <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript">
+      import "../node_modules/bootstrap";
+      import "bootstrap/dist/css/bootstrap.css";
+    </script>
+    <script type="text/javascript">
+      eel.expose(say_hello_js); // Expose this function to Python
+      function say_hello_js(x) {
+        console.log("Hello from " + x);
+      }
+
+      say_hello_js("Javascript World!");
+      eel.say_hello_py("Javascript World!"); // Call a Python function
+    </script>
+  </head>
+
+  <body>
+    <form action="/action_page.php">
+      <label for="concrete">Concrete Strength:</label>
+      <input type="number" id="concrete" name="concrete" /><br /><br />
+      <label for="steel_prof">Steel Profile Strength:</label>
+      <input type="number" id="steel_prof" name="steel_prof" /><br /><br />
+      <label for="steel_reb">Steel Rebar Strength:</label>
+      <input type="number" id="steel_reb" name="steel_reb" /><br /><br />
+      <input type="submit" value="Submit" />
+    </form>
+    <div class="input-group mb-3">
+      <button
+        class="btn btn-outline-secondary dropdown-toggle"
+        type="button"
+        data-bs-toggle="dropdown"
+        aria-expanded="false"
+      >
+        Dropdown
+      </button>
+      <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider" /></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+      </ul>
+      <input
+        type="text"
+        class="form-control"
+        aria-label="Text input with dropdown button"
+      />
+    </div>
+  </body>
 </html>
