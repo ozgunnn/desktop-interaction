@@ -19,54 +19,172 @@
       rel="stylesheet"
       href="node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
+    <link rel="javascript" href="node_modules/plotly.js-dist/plotly.js" />
+    <style>
+      .inputs {
+        background-color: gainsboro;
+        width: 30vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+      }
+      #figure {
+        width: 70vw;
+      }
+    </style>
+    <!-- script src="https://cdn.plot.ly/plotly-2.17.1.min.js"></script> -->
+    <script src="node_modules/plotly.js-dist/plotly-2.17.1.min.js"></script>
   </head>
 
   <body>
-    <form>
-      <label for="shape">Shape: </label>
-      <input type="radio" id="rectangle" name="shape" value="rectangle" />
-      <label for="rectangle">Square</label>
-      <input type="radio" id="circle" name="shape" value="circle" />
-      <label for="circle">Circle</label><br />
+    <div class="inputs">
+      <form id="form">
+        <label for="shape">Shape: </label>
+        <input
+          type="radio"
+          id="rectangle"
+          name="shape"
+          value="rectangle"
+          required
+        />
+        <label for="rectangle">Square</label>
+        <input type="radio" id="circle" name="shape" value="circle" required />
+        <label for="circle">Circle</label><br />
 
-      <label for="axis">Axis: </label>
-      <input type="radio" id="weak" name="axis" value="weak" />
-      <label for="weak">Weak</label>
-      <input type="radio" id="strong" name="axis" value="strong" />
-      <label for="strong">Strong</label><br />
+        <label for="axis">Axis: </label>
+        <input type="radio" id="weak" name="axis" value="weak" required />
+        <label for="weak">Weak</label>
+        <input type="radio" id="strong" name="axis" value="strong" required />
+        <label for="strong">Strong</label><br />
 
-      <label for="b">b (mm)</label><br />
-      <input type="number" id="b" name="b" /><br />
-      <label for="h">h (mm)</label><br />
-      <input type="number" id="h" name="h" /><br />
-      <label for="tf">tf (mm)</label><br />
-      <input type="number" id="tf" name="tf" /><br />
-      <label for="tw">tw (mm)</label><br />
-      <input type="number" id="tw" name="tw" /><br />
+        <label for="b">b (mm)</label>
+        <input style="width: 80px" type="number" id="b" name="b" required />
+        <label for="h">h (mm)</label>
+        <input
+          style="width: 80px"
+          type="number"
+          id="h"
+          name="h"
+          required
+        /><br />
+        <label for="tf">tf (mm)</label>
+        <input style="width: 80px" type="number" id="tf" name="tf" required />
+        <label for="tw">tw (mm)</label>
+        <input
+          style="width: 80px"
+          type="number"
+          id="tw"
+          name="tw"
+          required
+        /><br />
 
-      <label for="no_reb">No of Rebars:</label><br />
-      <select name="no_reb" id="no_reb">
-        <option value="4">4</option>
-        <option value="8">8</option>
-        <option value="12">12</option>
-        <option value="16">16</option>
-        <option value="20">20</option></select
-      ><br />
+        <label for="no_reb">No of Rebars:</label><br />
+        <select name="no_reb" id="no_reb" required>
+          <option value="4">4</option>
+          <option value="8">8</option>
+          <option value="12">12</option>
+          <option value="16">16</option>
+          <option value="20">20</option></select
+        ><br />
 
-      <label for="reb_dia">rebar diameter (mm)</label><br />
-      <input type="number" id="reb_dia" name="reb_dia" /><br />
-      <label for="fcm">fcm (MPa)</label><br />
-      <input type="number" id="fcm" name="fcm" /><br />
-      <label for="gamma,fcm">gamma,fcm</label><br />
-      <input type="number" id="gamma,fcm" name="gamma,fcm" value="1" /><br />
-      <label for="fa">fa (MPa)</label><br />
-      <input type="number" id="fa" name="fa" /><br />
-      <label for="gamma,fa">gamma,fa</label><br />
-      <input type="number" id="gamma,fa" name="gamma,fa" value="1" /><br />
-      <label for="fs">fs (MPa)</label><br />
-      <input type="number" id="fs" name="fs" /><br />
-      <label for="gamma,fs">gamma,fs</label><br />
-      <input type="number" id="gamma,fs" name="gamma,fs" value="1" /><br />
-    </form>
+        <label for="reb_dia">rebar diameter (mm)</label><br />
+        <input type="number" id="reb_dia" name="reb_dia" required /><br />
+
+        <label for="conc_law">Concrete Law:</label><br />
+        <select name="conc_law" id="conc_law" required>
+          <option value="ec2_nonlin">EN 1992-1-1 Nonlinear</option>
+          <option value="ec2_parabol_rect">
+            EN 1992-1-1 Parabola-Rectangle
+          </option>
+          <option value="plastic">Plastic</option></select
+        ><br />
+
+        <label for="fcm">fcm (MPa)</label><br />
+        <input type="number" id="fcm" name="fcm" required /><br />
+        <label for="gamma,fcm">gamma,fcm</label><br />
+        <input
+          type="number"
+          id="gamma,fcm"
+          name="gamma,fcm"
+          value="1"
+          required
+        /><br />
+        <label for="fa">fa (MPa)</label><br />
+        <input type="number" id="fa" name="fa" required /><br />
+        <label for="gamma,fa">gamma,fa</label><br />
+        <input
+          type="number"
+          id="gamma,fa"
+          name="gamma,fa"
+          value="1"
+          required
+        /><br />
+        <label for="fs">fs (MPa)</label><br />
+        <input type="number" id="fs" name="fs" required /><br />
+        <label for="gamma,fs">gamma,fs</label><br />
+        <input
+          type="number"
+          id="gamma,fs"
+          name="gamma,fs"
+          value="1"
+          required
+        /><br />
+        <input type="submit" value="submit" />
+      </form>
+    </div>
+    <div id="figure"></div>
+    <script>
+      var form = document.getElementById("form");
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var shape = extractRadioChoice("shape");
+        var axis = extractRadioChoice("axis");
+        var b = document.getElementById("b").value;
+        var h = document.getElementById("h").value;
+        var tf = document.getElementById("tf").value;
+        var tw = document.getElementById("tw").value;
+        var reb_dia = document.getElementById("reb_dia").value;
+        var fcm = document.getElementById("fcm").value;
+        var fcmgam = document.getElementById("gamma,fcm").value;
+        var fa = document.getElementById("fa").value;
+        var fagam = document.getElementById("gamma,fa").value;
+        var fs = document.getElementById("fs").value;
+        var fsgam = document.getElementById("gamma,fs").value;
+        var conc_law = document.getElementById("conc_law").value;
+        console.log(
+          shape,
+          axis,
+          b,
+          h,
+          tf,
+          tw,
+          reb_dia,
+          fcm,
+          fa,
+          fs,
+          fcmgam,
+          fagam,
+          fsgam,
+          conc_law
+        );
+      });
+
+      function extractRadioChoice(name) {
+        var selected;
+        var choices = document.getElementsByName(name);
+        for (var i = 0; i < choices.length; i++) {
+          if (choices[i].checked == true) {
+            selected = choices[i].value;
+          }
+        }
+        return selected;
+      }
+    </script>
+    <script type="text/javascript" src="plot.js"></script>
   </body>
 </html>
