@@ -15,39 +15,58 @@
       say_hello_js("Javascript World!");
       eel.say_hello_py("Javascript World!"); // Call a Python function
     </script>
+    <link
+      rel="stylesheet"
+      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
   </head>
 
   <body>
-    <form action="/action_page.php">
-      <label for="concrete">Concrete Strength:</label>
-      <input type="number" id="concrete" name="concrete" /><br /><br />
-      <label for="steel_prof">Steel Profile Strength:</label>
-      <input type="number" id="steel_prof" name="steel_prof" /><br /><br />
-      <label for="steel_reb">Steel Rebar Strength:</label>
-      <input type="number" id="steel_reb" name="steel_reb" /><br /><br />
-      <input type="submit" value="Submit" />
+    <form>
+      <label for="shape">Shape: </label>
+      <input type="radio" id="rectangle" name="shape" value="rectangle" />
+      <label for="rectangle">Square</label>
+      <input type="radio" id="circle" name="shape" value="circle" />
+      <label for="circle">Circle</label><br />
+
+      <label for="axis">Axis: </label>
+      <input type="radio" id="weak" name="axis" value="weak" />
+      <label for="weak">Weak</label>
+      <input type="radio" id="strong" name="axis" value="strong" />
+      <label for="strong">Strong</label><br />
+
+      <label for="b">b (mm)</label><br />
+      <input type="number" id="b" name="b" /><br />
+      <label for="h">h (mm)</label><br />
+      <input type="number" id="h" name="h" /><br />
+      <label for="tf">tf (mm)</label><br />
+      <input type="number" id="tf" name="tf" /><br />
+      <label for="tw">tw (mm)</label><br />
+      <input type="number" id="tw" name="tw" /><br />
+
+      <label for="no_reb">No of Rebars:</label><br />
+      <select name="no_reb" id="no_reb">
+        <option value="4">4</option>
+        <option value="8">8</option>
+        <option value="12">12</option>
+        <option value="16">16</option>
+        <option value="20">20</option></select
+      ><br />
+
+      <label for="reb_dia">rebar diameter (mm)</label><br />
+      <input type="number" id="reb_dia" name="reb_dia" /><br />
+      <label for="fcm">fcm (MPa)</label><br />
+      <input type="number" id="fcm" name="fcm" /><br />
+      <label for="gamma,fcm">gamma,fcm</label><br />
+      <input type="number" id="gamma,fcm" name="gamma,fcm" value="1" /><br />
+      <label for="fa">fa (MPa)</label><br />
+      <input type="number" id="fa" name="fa" /><br />
+      <label for="gamma,fa">gamma,fa</label><br />
+      <input type="number" id="gamma,fa" name="gamma,fa" value="1" /><br />
+      <label for="fs">fs (MPa)</label><br />
+      <input type="number" id="fs" name="fs" /><br />
+      <label for="gamma,fs">gamma,fs</label><br />
+      <input type="number" id="gamma,fs" name="gamma,fs" value="1" /><br />
     </form>
-    <div class="input-group mb-3">
-      <button
-        class="btn btn-outline-secondary dropdown-toggle"
-        type="button"
-        data-bs-toggle="dropdown"
-        aria-expanded="false"
-      >
-        Dropdown
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider" /></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
-      <input
-        type="text"
-        class="form-control"
-        aria-label="Text input with dropdown button"
-      />
-    </div>
   </body>
 </html>
