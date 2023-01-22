@@ -175,7 +175,7 @@ def main(fcm=30, fa=460, fs=500, gam_fcm=1, gam_fa=1, gam_fs=1, h=200, b=200, tw
         df['Fiber Coordinates from Centroid'] = df['Fiber Coordinates'] - depth/2
         y[1] = (df['Fiber Coordinates from Centroid'] *
                 (df['Concrete Force']+df['Rebar Force']+df['Profile Force'])).sum()
-        print(sol.x, sol.message, sol.fun)
+        #print(sol.x, sol.message, sol.fun)
 
 # %%
 

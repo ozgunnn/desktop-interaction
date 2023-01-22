@@ -1,6 +1,4 @@
-var form = document.getElementById("form");
-form.addEventListener("submit", function (event) {
-  event.preventDefault();
+function calculator() {
   var shape = extractRadioChoice("shape");
   var axis = extractRadioChoice("axis");
   var b = document.getElementById("b").value;
@@ -17,45 +15,33 @@ form.addEventListener("submit", function (event) {
   var conc_law = document.getElementById("conc_law").value;
   var depth = document.getElementById("depth").value;
   var reb_no = document.getElementById("no_reb").value;
-  console.log(
-    shape,
-    axis,
-    depth,
-    b,
-    h,
-    tf,
-    tw,
-    reb_dia,
-    reb_no,
+  eel.calculate(
     fcm,
     fa,
     fs,
     fcmgam,
     fagam,
     fsgam,
-    conc_law
-  );
-  console.log(
-    eel.calculate(
-      fcm,
-      fa,
-      fs,
-      fcmgam,
-      fagam,
-      fsgam,
-      h,
-      b,
-      tw,
-      tf,
-      depth,
-      reb_no,
-      reb_dia,
-      axis,
-      shape
-    )
-  );
-});
+    h,
+    b,
+    tw,
+    tf,
+    depth,
+    reb_no,
+    reb_dia,
+    axis,
+    shape
+  )(cb);
+}
 
+cb = function (ret1) {
+  console.log(ret1);
+  plotCurves(ret1);
+};
+var form = document.getElementById("cal_btn2");
+form.addEventListener("click", function (event) {
+  event.preventDefault();
+});
 function extractRadioChoice(name) {
   var selected;
   var choices = document.getElementsByName(name);
@@ -65,4 +51,15 @@ function extractRadioChoice(name) {
     }
   }
   return selected;
+}
+
+function plotCurves(NM) {
+  var trace1 = {
+    x: NM[1],
+    y: NM[0],
+    type: "scatter",
+  };
+  var data = [trace1];
+
+  Plotly.newPlot("figure", data);
 }

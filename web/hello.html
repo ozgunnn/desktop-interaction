@@ -5,7 +5,6 @@
 
     <!-- Include eel.js - note this file doesn't exist in the 'web' directory -->
     <script type="text/javascript" src="/eel.js"></script>
-
     <script type="text/javascript">
       eel.expose(say_hello_js); // Expose this function to Python
       function say_hello_js(x) {
@@ -36,7 +35,6 @@
         width: 70vw;
       }
     </style>
-    <!-- script src="https://cdn.plot.ly/plotly-2.17.1.min.js"></script> -->
     <script src="node_modules/plotly.js-dist/plotly-2.17.1.min.js"></script>
   </head>
 
@@ -44,7 +42,14 @@
     <div class="inputs">
       <form id="form">
         <label for="shape">Shape: </label>
-        <input type="radio" id="rectangle" name="shape" value="Rect" required />
+        <input
+          type="radio"
+          id="rectangle"
+          name="shape"
+          value="Rect"
+          required
+          checked="checked"
+        />
         <label for="rectangle">Square</label>
         <input
           type="radio"
@@ -58,7 +63,14 @@
         <label for="axis">Axis: </label>
         <input type="radio" id="weak" name="axis" value="Weak" required />
         <label for="weak">Weak</label>
-        <input type="radio" id="strong" name="axis" value="Strong" required />
+        <input
+          type="radio"
+          id="strong"
+          name="axis"
+          value="Strong"
+          required
+          checked="checked"
+        />
         <label for="strong">Strong</label><br />
         <label for="depth">Depth/Radius (mm)</label><br />
         <input
@@ -67,9 +79,17 @@
           id="depth"
           name="depth"
           required
+          value="400"
         /><br />
         <label for="b">b (mm)</label>
-        <input style="width: 80px" type="number" id="b" name="b" required />
+        <input
+          style="width: 80px"
+          type="number"
+          id="b"
+          name="b"
+          required
+          value="200"
+        />
         <label for="h">h (mm)</label>
         <input
           style="width: 80px"
@@ -77,9 +97,17 @@
           id="h"
           name="h"
           required
+          value="200"
         /><br />
         <label for="tf">tf (mm)</label>
-        <input style="width: 80px" type="number" id="tf" name="tf" required />
+        <input
+          style="width: 80px"
+          type="number"
+          id="tf"
+          name="tf"
+          required
+          value="15"
+        />
         <label for="tw">tw (mm)</label>
         <input
           style="width: 80px"
@@ -87,6 +115,7 @@
           id="tw"
           name="tw"
           required
+          value="9"
         /><br />
 
         <label for="no_reb">No of Rebars:</label><br />
@@ -99,7 +128,13 @@
         ><br />
 
         <label for="reb_dia">rebar diameter (mm)</label><br />
-        <input type="number" id="reb_dia" name="reb_dia" required /><br />
+        <input
+          type="number"
+          id="reb_dia"
+          name="reb_dia"
+          required
+          value="20"
+        /><br />
 
         <label for="conc_law">Concrete Law:</label><br />
         <select name="conc_law" id="conc_law" required>
@@ -111,7 +146,7 @@
         ><br />
 
         <label for="fcm">fcm (MPa)</label><br />
-        <input type="number" id="fcm" name="fcm" required /><br />
+        <input type="number" id="fcm" name="fcm" required value="30" /><br />
         <label for="gamma,fcm">gamma,fcm</label><br />
         <input
           type="number"
@@ -121,7 +156,7 @@
           required
         /><br />
         <label for="fa">fa (MPa)</label><br />
-        <input type="number" id="fa" name="fa" required /><br />
+        <input type="number" id="fa" name="fa" required value="460" /><br />
         <label for="gamma,fa">gamma,fa</label><br />
         <input
           type="number"
@@ -131,7 +166,7 @@
           required
         /><br />
         <label for="fs">fs (MPa)</label><br />
-        <input type="number" id="fs" name="fs" required /><br />
+        <input type="number" id="fs" name="fs" required value="500" /><br />
         <label for="gamma,fs">gamma,fs</label><br />
         <input
           type="number"
@@ -140,11 +175,18 @@
           value="1"
           required
         /><br />
-        <input type="submit" value="submit" />
+        <input
+          id="cal_btn"
+          type="button"
+          value="calculate"
+          onclick="calculator()"
+        />
+        <button id="cal_btn2">Submit2</button>
       </form>
     </div>
     <div id="figure"></div>
-    <script type="text/javascript" src="calculate.js"></script>
     <script type="text/javascript" src="plot.js"></script>
+
+    <script type="text/javascript" src="calculate.js"></script>
   </body>
 </html>

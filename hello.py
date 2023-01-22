@@ -21,10 +21,13 @@ def calculate(fcm, fa, fs, gam_fcm, gam_fa, gam_fs, h, b, tw, tf, depth, reb_no,
                       float(b), float(tw), float(tf), float(depth), int(reb_no), float(reb_d), axis, shape)
     N = NM['N']
     M = NM['M']
-    print(N, M)
-    print(fcm, fa, fs, gam_fcm, gam_fa, gam_fs, h, b,
-          tw, tf, depth, reb_no, reb_d, axis, shape)
-    return N, M
+    print(type(N))
+    return N.tolist(), M.tolist()
+
+
+@eel.expose
+def printpy(*arg):
+    print(arg)
 
 
 say_hello_py('Python World!')
