@@ -15,14 +15,18 @@ form.addEventListener("submit", function (event) {
   var fs = document.getElementById("fs").value;
   var fsgam = document.getElementById("gamma,fs").value;
   var conc_law = document.getElementById("conc_law").value;
+  var depth = document.getElementById("depth").value;
+  var reb_no = document.getElementById("no_reb").value;
   console.log(
     shape,
     axis,
+    depth,
     b,
     h,
     tf,
     tw,
     reb_dia,
+    reb_no,
     fcm,
     fa,
     fs,
@@ -43,8 +47,8 @@ form.addEventListener("submit", function (event) {
       b,
       tw,
       tf,
-      (depth = 400),
-      (reb_no = 8),
+      depth,
+      reb_no,
       reb_dia,
       axis,
       shape
