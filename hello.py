@@ -17,12 +17,16 @@ def calculate_arrays(a, b):
 
 @eel.expose
 def calculate(fcm, fa, fs, gam_fcm, gam_fa, gam_fs, h, b, tw, tf, depth, reb_no, reb_d, axis, shape):
-    NM = pyfuncs.main(float(fcm), float(fa), float(fs), float(gam_fcm), float(gam_fa), float(gam_fs), float(h),
-                      float(b), float(tw), float(tf), float(depth), int(reb_no), float(reb_d), axis, shape)
-    N = NM['N']
-    M = NM['M']
-    print(type(N))
-    return N.tolist(), M.tolist()
+    NM, NM1, NM2 = pyfuncs.main(float(fcm), float(fa), float(fs), float(gam_fcm), float(gam_fa), float(gam_fs), float(h),
+                                float(b), float(tw), float(tf), float(depth), int(reb_no), float(reb_d), axis, shape)
+    N = NM['N']/1000
+    M = NM['M']/1000000
+    N1 = NM1['N']/1000
+    M1 = NM1['M']/1000000
+    N2 = NM2['N']/1000
+    M2 = NM2['M']/1000000
+    # print(type(N))
+    return N.tolist(), M.tolist(), N1.tolist(), M1.tolist(), N2.tolist(), M2.tolist()
 
 
 @eel.expose

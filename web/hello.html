@@ -28,6 +28,7 @@
         height: 100vh;
       }
       body {
+        font-family: Arial, Helvetica, sans-serif;
         display: flex;
         justify-content: center;
       }
@@ -121,7 +122,7 @@
         <label for="no_reb">No of Rebars:</label><br />
         <select name="no_reb" id="no_reb" required>
           <option value="4">4</option>
-          <option value="8">8</option>
+          <option value="8" selected>8</option>
           <option value="12">12</option>
           <option value="16">16</option>
           <option value="20">20</option></select
@@ -136,45 +137,45 @@
           value="20"
         /><br />
 
-        <label for="conc_law">Concrete Law:</label><br />
+        <!-- <label for="conc_law">Concrete Law:</label><br />
         <select name="conc_law" id="conc_law" required>
           <option value="ec2_nonlin">EN 1992-1-1 Nonlinear</option>
           <option value="ec2_parabol_rect">
             EN 1992-1-1 Parabola-Rectangle
           </option>
           <option value="plastic">Plastic</option></select
-        ><br />
+        ><br /> -->
 
         <label for="fcm">fcm (MPa)</label><br />
-        <input type="number" id="fcm" name="fcm" required value="30" /><br />
-        <label for="gamma,fcm">gamma,fcm</label><br />
+        <input type="number" id="fcm" name="fcm" required value="40" /><br />
+        <!-- <label for="gamma,fcm">gamma,fcm</label><br />
         <input
           type="number"
           id="gamma,fcm"
           name="gamma,fcm"
           value="1"
           required
-        /><br />
+        /><br /> -->
         <label for="fa">fa (MPa)</label><br />
         <input type="number" id="fa" name="fa" required value="460" /><br />
-        <label for="gamma,fa">gamma,fa</label><br />
+        <!-- <label for="gamma,fa">gamma,fa</label><br />
         <input
           type="number"
           id="gamma,fa"
           name="gamma,fa"
           value="1"
           required
-        /><br />
+        /><br /> -->
         <label for="fs">fs (MPa)</label><br />
         <input type="number" id="fs" name="fs" required value="500" /><br />
-        <label for="gamma,fs">gamma,fs</label><br />
+        <!-- <label for="gamma,fs">gamma,fs</label><br />
         <input
           type="number"
           id="gamma,fs"
           name="gamma,fs"
           value="1"
           required
-        /><br />
+        /><br /> -->
         <input
           id="cal_btn"
           type="button"

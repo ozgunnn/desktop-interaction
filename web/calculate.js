@@ -7,12 +7,15 @@ function calculator() {
   var tw = document.getElementById("tw").value;
   var reb_dia = document.getElementById("reb_dia").value;
   var fcm = document.getElementById("fcm").value;
-  var fcmgam = document.getElementById("gamma,fcm").value;
+  // var fcmgam = document.getElementById("gamma,fcm").value;
+  var fcmgam = 1;
   var fa = document.getElementById("fa").value;
-  var fagam = document.getElementById("gamma,fa").value;
+  // var fagam = document.getElementById("gamma,fa").value;
+  var fagam = 1;
   var fs = document.getElementById("fs").value;
-  var fsgam = document.getElementById("gamma,fs").value;
-  var conc_law = document.getElementById("conc_law").value;
+  // var fsgam = document.getElementById("gamma,fs").value;
+  var fsgam = 1;
+  // var conc_law = document.getElementById("conc_law").value;
   var depth = document.getElementById("depth").value;
   var reb_no = document.getElementById("no_reb").value;
   eel.calculate(
@@ -54,12 +57,47 @@ function extractRadioChoice(name) {
 }
 
 function plotCurves(NM) {
-  var trace1 = {
+  var Nonlinear = {
     x: NM[1],
     y: NM[0],
+    mode: "lines",
     type: "scatter",
+    name: "EN 1992-1-1 Nonlinear",
   };
-  var data = [trace1];
 
-  Plotly.newPlot("figure", data);
+  var Plastic = {
+    x: NM[3],
+    y: NM[2],
+    mode: "lines",
+    type: "scatter",
+    name: "Plastic",
+    line: {
+      shape: "spline",
+      smoothing: 1.3,
+    },
+  };
+  var Parabola_Rectangle = {
+    x: NM[5],
+    y: NM[4],
+    type: "scatter",
+    name: "EN 1992-1-1 Parabola Rectangle",
+  };
+  var layout = {
+    autosize: false,
+    width: 1000,
+    height: 750,
+    xaxis: {
+      title: {
+        text: "Moment (kNm)",
+      },
+    },
+    yaxis: {
+      title: {
+        text: "Force (kN)",
+      },
+    },
+  };
+  var data = [Nonlinear, Parabola_Rectangle, Plastic];
+
+  Plotly.newPlot("figure", data, layout);
 }
